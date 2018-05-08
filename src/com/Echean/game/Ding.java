@@ -8,8 +8,8 @@ public class Ding extends GameObject {
         img = image;
         x = 200;
         y = 200;
-        width = 10;
-        heigth = 10;
+        width = image.getWidth(null);
+        heigth = image.getHeight(null);
         speed = 3;
         degree = Math.random() * Math.PI * 2;
     }
@@ -19,10 +19,10 @@ public class Ding extends GameObject {
         x += speed * Math.cos(degree);
         y += speed * Math.sin(degree);
 
-        if(x < 0 || x > Constant.GAME_WIDTH - 40){
+        if(x < 0 || x > Constant.GAME_WIDTH - width){
             degree = Math.PI - degree;
         }
-        if(y < 30 || y > Constant.GAME_HEIGHT - 40){
+        if(y < 30 || y > Constant.GAME_HEIGHT - heigth){
             degree = - degree;
         }
     }

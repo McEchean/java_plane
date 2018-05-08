@@ -5,24 +5,30 @@ import java.awt.event.KeyEvent;
 
 public class Plane extends GameObject {
     boolean left,right,up,down;
+    boolean live = true;
     @Override
     public void drawSelf(Graphics g) {
-        g.drawImage(img,(int)x,(int)y,null);
-        if(left){
-            x-=speed;
-        }else if(right){
-            x+=speed;
-        }else if(up){
-            y-=speed;
-        }else if(down){
-            y+=speed;
+        if(live){
+            g.drawImage(img,(int)x,(int)y,null);
+            if(left){
+                x-=speed;
+            }else if(right){
+                x+=speed;
+            }else if(up){
+                y-=speed;
+            }else if(down){
+                y+=speed;
+            }
         }
+
     }
     public Plane(Image img, int x,int y,int speed) {
         this.img = img;
         this.x = x;
         this.y = y;
         this.speed = speed;
+        this.width = img.getWidth(null);
+        this.heigth = img.getHeight(null);
     }
 
     public void addDirection(KeyEvent e) {
